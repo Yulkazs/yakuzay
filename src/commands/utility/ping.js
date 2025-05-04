@@ -6,15 +6,13 @@ module.exports = {
     .setDescription('Replies with Pong and bot latency'),
   
   async execute(interaction) {
-    // Calculate bot latency
-    const response = await interaction.reply({ 
-      content: 'Pinging...', 
-      withResponse: true 
-    });
+    // Start by deferring the reply
+    await interaction.deferReply();
     
-    const latency = response.createdTimestamp - interaction.createdTimestamp;
+    // Calculate bot latency
+    const botLatency = Date.now() - interaction.createdTimestamp;
     const apiLatency = Math.round(interaction.client.ws.ping);
     
-    await interaction.editReply(`Pong! 🏓\nBot Latency: ${latency}ms\nAPI Latency: ${apiLatency}ms`);
+    await interaction.editReply(`Pong! 🏓\nBot Latency: ${botLatency}ms\nAPI Latency: ${apiLatency}ms`);
   },
 };

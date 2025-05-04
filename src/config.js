@@ -20,10 +20,12 @@ module.exports = {
   // Colors for embeds
   colors: {
     primary: '#5865F2',   // Discord blurple
-    success: '#57F287',   // Green
+    success: '#00BA3A',   // Green
     warning: '#FEE75C',   // Yellow
-    error: '#ED4245',     // Red
-    info: '#5865F2'       // Blurple
+    error: '#C91104',     // Red
+    info: '#5865F2',      // Blurple
+    embed: '#242429',     // Dark gray for embed backgrounds
+    default: '#DFD0B7'    // Default color for embeds
   },
   
   // Development/production mode

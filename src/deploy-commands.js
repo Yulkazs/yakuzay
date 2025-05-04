@@ -1,4 +1,3 @@
-// Script to deploy slash commands to Discord
 const fs = require('node:fs');
 const path = require('node:path');
 const { REST, Routes } = require('discord.js');
@@ -19,6 +18,7 @@ for (const folder of commandFolders) {
     
     if ('data' in command) {
       commands.push(command.data.toJSON());
+      console.log(`Preparing to deploy: ${command.data.name}`);
     } else {
       console.log(`[WARNING] The command at ${filePath} is missing a required "data" property.`);
     }
@@ -42,6 +42,7 @@ const rest = new REST().setToken(config.token);
         { body: commands },
       );
       console.log(`Successfully reloaded ${data.length} guild (/) commands.`);
+      console.log('Guild-specific commands update immediately. They should be available now.');
     } else {
       // Global deployment (can take up to an hour to propagate)
       data = await rest.put(
@@ -49,8 +50,10 @@ const rest = new REST().setToken(config.token);
         { body: commands },
       );
       console.log(`Successfully reloaded ${data.length} global (/) commands.`);
+      console.log('Global commands can take up to an hour to propagate to all servers.');
     }
   } catch (error) {
+    console.error('Error deploying commands:');
     console.error(error);
   }
 })();

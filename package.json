@@ -1,0 +1,20 @@
+{
+  "name": "yakuzay",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yulkaz",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0",
+    "nodemon": "^3.1.10",
+    "path": "^0.12.7",
+    "winston": "^3.17.0"
+  }
+}
